@@ -1,0 +1,15 @@
+<form>
+  <div *ngFor="let value of formInput">
+    <label [for]="value.id">{{ value.label }}</label>
+    <br />
+    <input type="text" [id]="value.id" />
+    <br />
+  </div>
+
+  <button type="button">Submit</button>
+</form>
+
+<app-list></app-list>
+
+
+

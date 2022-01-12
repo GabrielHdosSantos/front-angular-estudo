@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th *ngFor="let header of headers">
+      {{header}}
+    </th>
+  </tr>
+<tr *ngFor="let person of people">
+  <td>{{ person.name }}</td>
+  <td>{{ person.age }}</td>
+  <td>{{ person.email }}</td>
+</tr>
+</table>
