@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -7,18 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent {
 
+  @Input()
+  people;
+
   headers = ['name', 'age', 'email'];
 
-  people = [{
-    name: 'gabriel',
-    age: '18',
-    email: 'dgayadgyda@gmail'
-  },
-  {
-    name: 'dadadadad',
-    age: '23',
-    email: 'dadadada@gmail'
-  }
-]
+
+
 
 }

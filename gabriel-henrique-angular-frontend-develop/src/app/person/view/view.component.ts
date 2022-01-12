@@ -5,11 +5,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
+  people = [{
+    name: 'gabriel',
+    age: '18',
+    email: 'dgayadgyda@gmail'
+  },
+  {
+    name: 'dadadadad',
+    age: '23',
+    email: 'dadadada@gmail'
   }
+]
+
+
 
 }
