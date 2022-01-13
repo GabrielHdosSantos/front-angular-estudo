@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FeatureModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
