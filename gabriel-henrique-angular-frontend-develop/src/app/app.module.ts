@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PersonModule } from './person/person.module';
+import { SharedModule } from './shared/shared.module';
+import { FeatureModule } from './feature/feature.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,8 @@ import { PersonModule } from './person/person.module';
   ],
   imports: [
     BrowserModule,
-    PersonModule
+    FeatureModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
