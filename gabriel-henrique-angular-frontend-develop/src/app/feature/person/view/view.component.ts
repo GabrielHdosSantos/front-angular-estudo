@@ -9,17 +9,13 @@ export class ViewComponent  {
 
   constructor() { }
 
-  people = [{
-    name: 'gabriel',
-    age: '18',
-    email: 'dgayadgyda@gmail'
-  },
-  {
-    name: 'dadadadad',
-    age: '23',
-    email: 'dadadada@gmail'
+
+  addToList(event){
+    this.people.push(event)
   }
-]
+
+
+  people = []
 
 
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -7,20 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent {
 
-  formInput = [
-    {
-      label: 'name',
-      id: 'name',
-    },
-    {
-      label: 'age',
-      id: 'age',
-    },
-    {
-      label: 'email',
-      id: 'email',
-    },
-  ];
+  @Output()
+  submit = new EventEmitter()
+  keys: string[]
 
+  formPerson: FormGroup
+
+  constructor(private formBuilder: FormBuilder){
+  }
+
+  ngOnInit(): void{
+    this.formPerson = this.formBuilder.group({
+      name: '',
+      age: '',
+      email: '',
+      phone: ''
+
+    })
+
+    this.keys = Object.keys(this.formPerson.value)
+  }
+
+  clickOnSubmit(){
+    this.submit.emit(this.formPerson.value)
+  }
 
 }

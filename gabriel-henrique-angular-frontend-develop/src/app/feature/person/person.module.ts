@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ViewComponent } from './view/view.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [ListComponent, CadastroComponent, ViewComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [ViewComponent]
 
