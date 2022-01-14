@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/core/people/models/Person';
 import { PeopleService } from 'src/app/core/people/people.service';
 
@@ -14,12 +15,20 @@ export class ListComponent {
 
   headers = ['name', 'age', 'email'];
 
-  constructor(private peopleService: PeopleService){
+  constructor(private peopleService: PeopleService,
+    private router: Router,
+    private activated: ActivatedRoute){
 
   }
 
+  editPerson(id: number) {
+    this.router.navigate(['edit', id], { relativeTo: this.activated });
+  }
+
+
   deleteOnSubmit(id){
     this.peopleService.deletar(id).subscribe()
+    this.people = this.people.filter((person) => person.id !== id)
     }
   }
 

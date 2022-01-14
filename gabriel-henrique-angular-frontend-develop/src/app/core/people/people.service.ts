@@ -9,7 +9,6 @@ import { Person } from './models/Person';
 })
 export class PeopleService {
   private baseUrL = `${environment.baseUrl}/people`;
-  private baseDelete = `${environment.baseUrl}/people/`
 
   constructor(private http: HttpClient) {}
 
@@ -17,13 +16,21 @@ export class PeopleService {
     return this.http.get<Person[]>(this.baseUrL);
   }
 
-  add(person: Person) {
+  getOne(id: number) {
+    return this.http.get<Person>(`${this.baseUrL}/${id}`);
+  }
+
+  deletar(id: number) {
+    return this.http.delete<void>(`${this.baseUrL}/${id}`);
+  }
+
+  upsert(person: Person) {
     person.age = Number(person.age);
-    return this.http.post<Person>(this.baseUrL, person);
-  }
 
-  deletar(id: number){
-    return this.http.delete<void>(this.baseDelete + id)
+    if (person.id) {
+      return this.http.patch<Person>(`${this.baseUrL}/${person.id}`, person);
+    } else {
+      return this.http.post<Person>(this.baseUrL, person);
+    }
   }
-
 }
