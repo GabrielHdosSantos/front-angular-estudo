@@ -5,20 +5,25 @@ import { environment } from 'src/environments/environment';
 import { Person } from './models/Person';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PeopleService {
+  private baseUrL = `${environment.baseUrl}/people`;
+  private baseDelete = `${environment.baseUrl}/people/`
 
-  private baseUrL = `${environment.baseUrl}/people`
+  constructor(private http: HttpClient) {}
 
- private _person = new Subject<Person>();
-
-  constructor(private http: HttpClient) { }
-
-  findAll(){
+  findAll() {
     return this.http.get<Person[]>(this.baseUrL);
   }
 
+  add(person: Person) {
+    person.age = Number(person.age);
+    return this.http.post<Person>(this.baseUrL, person);
+  }
+
+  deletar(id: number){
+    return this.http.delete<void>(this.baseDelete + id)
+  }
+
 }
-
-

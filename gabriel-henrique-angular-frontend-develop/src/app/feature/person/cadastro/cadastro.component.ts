@@ -1,37 +1,42 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Person } from 'src/app/core/people/models/Person';
+import { PeopleService } from 'src/app/core/people/people.service';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent {
-
   @Output()
-  submit = new EventEmitter()
-  keys: string[]
+  submit = new EventEmitter();
+  keys: string[];
 
-  formPerson: FormGroup
+  formPerson: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private peopleService: PeopleService
+  ) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.formPerson = this.formBuilder.group({
       name: '',
-      age: '',
+      age: ['', [Validators.max(80)]],
       email: '',
-      phone: ''
+      phone: '',
+    });
 
-    })
-
-    this.keys = Object.keys(this.formPerson.value)
+    this.keys = Object.keys(this.formPerson.value);
   }
 
-  clickOnSubmit(){
-    this.submit.emit(this.formPerson.value)
+  clickOnSubmit() {
+    if (this.formPerson.valid) {
+      const person: Person = this.formPerson.value;
+      this.peopleService.add(person).subscribe((value) => {
+        this.submit.emit(value), this.formPerson.reset();
+      });
+    }
   }
-
 }

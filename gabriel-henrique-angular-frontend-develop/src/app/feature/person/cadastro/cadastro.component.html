@@ -1,8 +1,12 @@
 <form [formGroup]="formPerson">
   <div *ngFor="let value of keys">
-    <label [for]="value.id">{{ value}}</label>
+    <label [for]="value.id">{{ value }}</label>
     <br />
-    <input type="text" [(ngModel)]="value.name" [formControlName]="value" [id]="value" />
+    <input
+      type="text"
+      [formControlName]="value"
+      [id]="value"
+    />
     <br />
   </div>
 
@@ -10,8 +14,3 @@
 </form>
 
 <app-list></app-list>
-
-
-
-
-

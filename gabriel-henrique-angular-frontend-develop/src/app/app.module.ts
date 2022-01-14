@@ -7,6 +7,7 @@ import { FeatureModule } from './feature/feature.module';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http'
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,11 @@ import { HttpClientModule} from '@angular/common/http'
   ],
   imports: [
     BrowserModule,
-    FeatureModule,
-    CoreModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([]),
+    FeatureModule,
+    CoreModule
 
   ],
   providers: [],

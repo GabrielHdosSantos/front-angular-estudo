@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Person } from 'src/app/core/people/models/Person';
 import { PeopleService } from 'src/app/core/people/people.service';
 
 @Component({
@@ -20,7 +21,6 @@ export class ViewComponent  implements OnInit {
   addToList(event){
     this.people.push(event)
   }
-
 
   people = []
 

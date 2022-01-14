@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ViewComponent } from './view/view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PersonRoutingModule } from './person-routing.module';
 
 
 
@@ -11,9 +12,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [ListComponent, CadastroComponent, ViewComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PersonRoutingModule
   ],
-  exports: [ViewComponent]
+  exports: []
 
 })
 export class PersonModule { }
