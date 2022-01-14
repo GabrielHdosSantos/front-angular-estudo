@@ -9,12 +9,9 @@ import { PeopleService } from 'src/app/core/people/people.service';
 })
 export class ViewComponent  implements OnInit {
 
-  constructor(private peopleService: PeopleService) { }
+  constructor() { }
 
-  ngOnInit(){
-    this.peopleService.findAll().subscribe((value: any) =>{
-       this.people = value
-    });
+  ngOnInit():void{
   }
 
 

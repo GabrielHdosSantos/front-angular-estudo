@@ -6,30 +6,32 @@ import { PeopleService } from 'src/app/core/people/people.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
-
+export class ListComponent implements OnInit {
   @Input()
-  people;
+  people = [];
 
   headers = ['name', 'age', 'email'];
 
-  constructor(private peopleService: PeopleService,
+  constructor(
+    private peopleService: PeopleService,
     private router: Router,
-    private activated: ActivatedRoute){
+    private activated: ActivatedRoute
+  ) {}
 
+  ngOnInit(): void {
+    this.activated.data.subscribe((value) => {
+      this.people = value.people;
+    });
   }
 
   editPerson(id: number) {
     this.router.navigate(['edit', id], { relativeTo: this.activated });
   }
 
-
-  deleteOnSubmit(id){
-    this.peopleService.deletar(id).subscribe()
-    this.people = this.people.filter((person) => person.id !== id)
-    }
+  deleteOnSubmit(id) {
+    this.peopleService.deletar(id).subscribe();
+    this.people = this.people.filter((person) => person.id !== id);
   }
-
-
+}
