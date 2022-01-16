@@ -1,0 +1,12 @@
+<form [formGroup]="formAnimals">
+<div *ngFor="let value of keys">
+  <label [for]="value.id">{{ value }}</label>
+  <br />
+  <input type="text" [formControlName]="value" [id]="value" />
+  <br />
+</div>
+  <button (click)="ClickOnSubmit()">submit</button>
+
+</form>
+
+<app-list></app-list>

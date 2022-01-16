@@ -1,0 +1,9 @@
+<table>
+  <tr>
+    <th *ngFor="let header of headers">{{header}}</th>
+  </tr>
+  <tr *ngFor="let animal of animals">
+    <td>{{animal.identification}}</td>
+    <td>{{animal.specie}}</td>
+  </tr>
+</table>

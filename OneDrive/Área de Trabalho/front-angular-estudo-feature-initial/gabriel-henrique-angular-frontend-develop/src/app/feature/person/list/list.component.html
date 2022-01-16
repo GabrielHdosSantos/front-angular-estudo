@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th *ngFor="let header of headers">
+      {{header}}
+    </th>
+  </tr>
+<tr *ngFor="let person of people">
+  <td>{{ person.name }}</td>
+  <td>{{ person.age }}</td>
+  <td>{{ person.email }}</td>
+  <button (click)="deleteOnSubmit(person.id)">deletar</button>
+  <button (click)="editPerson(person.id)">Edit</button>
+</tr>
+</table>
+
