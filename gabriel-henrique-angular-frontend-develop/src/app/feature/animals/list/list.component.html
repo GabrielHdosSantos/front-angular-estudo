@@ -2,9 +2,8 @@
   <tr>
     <th *ngFor="let header of headers">{{ header }}</th>
   </tr>
+  <input type="search" placeholder="Pesquise:" (keyup.enter)="queryFilter($event)" />
   <tr *ngFor="let animal of animals">
-    <input type="search" (keyup.enter)="queryFilter($event)" />
-
     <td>{{ animal.identification }}</td>
     <td>{{ animal.specie }}</td>
     <button (click)="deleteOnSubmit(animal.id)">deletar</button>
