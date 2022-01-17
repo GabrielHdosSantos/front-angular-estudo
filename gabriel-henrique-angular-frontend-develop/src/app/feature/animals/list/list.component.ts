@@ -25,7 +25,9 @@ export class ListComponent implements OnInit {
   }
 
   queryFilter(event){
-    this.animalsService.filter(event.target.value).subscribe((value))
+    this.animalsService.filter(event.target.value).subscribe((value) => {
+      this.animals = value;
+    })
 
   }
 
