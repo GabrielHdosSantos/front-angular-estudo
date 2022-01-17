@@ -12,7 +12,7 @@ export class PeopleService {
 
   constructor(private http: HttpClient) {}
 
-  findAll() {
+  findAll(): Observable<Person[]> {
     return this.http.get<Person[]>(this.baseUrL);
   }
 

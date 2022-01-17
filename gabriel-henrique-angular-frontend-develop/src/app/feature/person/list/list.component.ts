@@ -21,13 +21,10 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activated.data.subscribe((value) => {
-      this.people = value.people;
-    });
   }
 
   editPerson(id: number) {
-    this.router.navigate(['edit', id], { relativeTo: this.activated });
+    this.router.navigate(['editar', id], { relativeTo: this.activated });
   }
 
   deleteOnSubmit(id) {

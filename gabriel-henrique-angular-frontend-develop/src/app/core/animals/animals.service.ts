@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Animals } from './models/Animal';
+import { Animal } from './models/Animal';
 
 @Injectable({
   providedIn: 'root',
@@ -13,21 +14,27 @@ export class AnimalsService implements OnInit {
 
   ngOnInit(): void {}
 
-  add(animal: Animals) {
-    this.httpClient.post(`${this.baseUrl}`, animal);
+  add(animal: Animal) {
+    return this.httpClient.post(`${this.baseUrl}`, animal);
   }
 
-  getAll() {
-    this.httpClient.get(`${this.baseUrl}`);
+  findById(id: number): Observable<Animal> {
+    return this.httpClient.get<Animal>(`${this.baseUrl}/${id}`);
   }
 
-  patch(animal: Animals) {
-    this.httpClient.patch(`${this.baseUrl}/${animal.id}`, animal);
+  getAll(): Observable<Animal[]> {
+    return this.httpClient.get<Animal[]>(`${this.baseUrl}`);
+  }
+
+  upsert(animal: Animal) {
+    if (animal.id) {
+      return this.httpClient.patch(`${this.baseUrl}/${animal.id}`, animal);
+    } else {
+      return this.httpClient.post(this.baseUrl, animal);
+    }
   }
 
   delete(id: number) {
-    this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
-
-  v;
 }

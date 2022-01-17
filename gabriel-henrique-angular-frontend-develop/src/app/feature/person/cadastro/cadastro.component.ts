@@ -22,7 +22,8 @@ export class CadastroComponent {
   constructor(
     private formBuilder: FormBuilder,
     private peopleService: PeopleService,
-    private router: Router
+    private router: Router,
+    private activated: ActivatedRoute
 
   ) {}
 
@@ -44,6 +45,14 @@ export class CadastroComponent {
         this.formPerson.patchValue(person);
       });
     }
+  }
+
+  goAnimals(){
+    this.router.navigate(['animals'], {relativeTo: this.activated})
+  }
+
+  back(){
+    this.router.navigate([''], {relativeTo: this.activated})
   }
 
   clickOnSubmit() {

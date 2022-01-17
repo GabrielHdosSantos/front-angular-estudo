@@ -5,7 +5,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { ViewComponent } from './view/view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PersonRoutingModule } from './person-routing.module';
-import { EditComponent } from '../../edit/edit.component';
+import { EditComponent } from './edit/edit.component';
 
 
 

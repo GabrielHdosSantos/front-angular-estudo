@@ -12,9 +12,12 @@ const routes: Routes = [
   },
   {
     path: 'animals',
+    canActivate:[
+      PermissionGuard
+    ],
     loadChildren: async () =>
       import('./animals/animals.module').then((m) => m.AnimalsModule),
-      component: FormComponent
+
   },
   {
     path: 'people',

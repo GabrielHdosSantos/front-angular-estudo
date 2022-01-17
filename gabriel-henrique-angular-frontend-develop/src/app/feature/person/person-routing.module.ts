@@ -7,7 +7,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { PeopleService } from 'src/app/core/people/people.service';
-import { EditComponent } from '../../edit/edit.component';
+import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
 
 @Injectable()
@@ -28,7 +28,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'edit',
+    path: 'editar',
     children: [
       {
         path: ':id',
