@@ -10,6 +10,8 @@ import { AnimalsService } from 'src/app/core/animals/animals.service';
 export class ListComponent implements OnInit {
   @Input()
   animals = [];
+  searchText;
+
 
   headers = ['identification', 'specie'];
 
@@ -20,6 +22,11 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  }
+
+  queryFilter(event){
+    this.animalsService.filter(event.target.value).subscribe((value))
+
   }
 
   deleteOnSubmit(id: number) {

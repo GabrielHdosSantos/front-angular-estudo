@@ -26,6 +26,11 @@ export class AnimalsService implements OnInit {
     return this.httpClient.get<Animal[]>(`${this.baseUrl}`);
   }
 
+  filter(nome){
+    return this.httpClient.get<Animal[]>(`${this.baseUrl}?q=${nome}`)
+  }
+
+
   upsert(animal: Animal) {
     if (animal.id) {
       return this.httpClient.patch(`${this.baseUrl}/${animal.id}`, animal);
